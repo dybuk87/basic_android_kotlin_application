@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PostTest</string>
+    <string name="activity_welcome_title">Welcome!</string>
+    <string name="search">Search</string>
+</resources>
