@@ -21,7 +21,7 @@ Project is divided into two parts
 ## Core Commons
 
 Commons are classes that can be use in all application to reduce code redundancy. 
-- AsyncList<T : AsyncListElement> - This class handle asynchronus list that distribute it state by BehaviorSubject, and also allow to wait on expected item using Rx.Observable
+- AsyncList<T : AsyncListElement> - This class handle asynchronous list that distribute it state by BehaviorSubject, and also allow to wait on expected item using Rx.Observable
 - CombineFlatMap - This class allow to merge multiple observables by using stream flatMap, this merge is dynamic allowing to exclude some observable during runtime. CombineFlatMap use sort of builder design pattern to combine.
 - SimpleFuture - Implements java concurrency Future, allow to wait for result/error using get, and allow to set result/error by methods setResult/setError. When error is set get will throw ExecuteException and with cause by set in setError()
 - Translator<A, B> - interface to translate forward from object A to object B and backward from B to A
@@ -92,12 +92,12 @@ Repository should wrap one domain (DDD like)
 
 Repository is also place for ACL (Anti Corruption Layer).
 
-Repository can emmit domain events, for example if we create StatisticRepository that fetch statistic from server and we would like to know if new post was created we could emmit NewPost event from ChatRepository that StatisticRepository will consume and refresh statistics.  
+Repository can emits domain events, for example if we create StatisticRepository that fetch statistic from server and we would like to know if new post was created we could emmit NewPost event from ChatRepository that StatisticRepository will consume and refresh statistics.  
 
 Repository main tasks:
  - Fetch data using injected DAL,
- - Translate POJO into busines objects (for example PostDto -> Post) using Translators (ACL),
- - This is place to add high level cache / flyweigh patter 
+ - Translate POJO into business objects (for example PostDto -> Post) using Translators (ACL),
+ - This is place to add high level cache / flyweight patter 
 
 ```
 interface ChatRepository  {
@@ -113,7 +113,7 @@ interface ChatRepository  {
 
 - reload - force data reload 
 - getAllPosts() - return State-Asynchronous list of Posts, can be updated at any time, method return immediately, and can start data fetching if data are not ready. 
-- findPostById(id) - return immediately "promise" of post object, if post list is not ready it will nitialize data fetch.
+- findPostById(id) - return immediately "promise" of post object, if post list is not ready it will initialize data fetch.
 
 Post comments are exposed by post.comments this is AsyncList<Comment>()
 
